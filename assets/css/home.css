@@ -1,0 +1,58 @@
+body{
+  background: linear-gradient(hsl(16, 47%, 83%),#290404);
+  min-height: 100vh;
+}
+#create-habit
+{
+    display:none;
+}
+#habit-div
+{
+    text-align: center;
+    padding: 1rem;
+    color: darkred;
+    font-family: auto;
+    font-style: italic;
+}
+.card-header
+{
+  display: flex;
+  justify-content: space-between;
+}
+#createHabit
+{
+  display: flex;
+flex-direction: column;
+align-items: center;
+position: absolute;
+z-index: 1;
+padding: 2rem;
+font-size: 1.2rem;
+left: 36vw;
+top: 9rem;
+max-width: 30vw;
+background: lightblue;
+}
+#createHabit img{
+  width:100%;
+}
+#createHabit label{
+  display: inline-block;
+  margin-bottom: .5rem;
+  font-style: oblique;
+  font-family: sans-serif;
+}
+#createHabit input{
+  margin-bottom: 0.5rem;
+ border: 0px solid;
+background: aliceblue;
+}
+.card{
+  width: 16rem;
+}
+.outer-div{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

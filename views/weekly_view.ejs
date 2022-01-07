@@ -1,0 +1,63 @@
+<link rel="stylesheet" href="/css/weeklyView.css">
+
+<div id="habit-div">  
+    <h1>" the first thing is to be honest with yourself. ...  "</h1>
+   <div id="habit-inner-div">      <a href="/"><button type="submit" class="btn btn-secondary btn-lg"> Daily view</button> </a></div>
+</div>
+  </div>
+
+    <div class="outer-div">
+        <%for(let i=0;i<habits.length;i++){%>
+            <%let days=habits[i].days;%>
+            <%let len=habits[i].days.length;%>
+               
+            <%if(i==0){%>
+                
+                    <table border="2">
+                        <tr>
+                            <%let start=len-7;%>
+                            <th>Habits</th>
+                            <th>Time</th>
+                           <%while(start<len){%>
+                               <th>
+                                   <%=days[start].date.substring(0,10)%>
+                               </th>
+                               <%start++%>
+                            <%}%>
+                         </tr>
+                <%}%>
+                <tr>
+                    <%let start=len-7;%>
+                            <td><%=habits[i].name%></td>
+                            <td><%=habits[i].time%></td>
+                           <%while(start<len){%>
+                               <td id="detail-<%=days[start].id%>">
+                                <a href="/weeklyView/update/?day_id=<%=days[start].id%>&habit_id=<%=habits[i].id%>" class="update" > <button id="update-<%=days[start].id%>" >
+                                    <%if(days[start].status==0){%>
+                                                          None
+                                          <%} else if(days[start].status==1){%>
+                                                         Not done
+                                  <%}else{%>
+                                          done
+                                  <%}%>
+                                </button></a>
+                               </td>
+                               <%start++%>
+                            <%}%>
+                            <td> <%if(habits[i].favourite){%>
+                                <a href="favourite/<%=habits[i].id%>" class="favourites" id="favourite-<%=habits[i].id%>" style="color: red;"> <i class="fas fa-heart " ></i> </a> 
+                                 <%}else{%>
+                                        <a href="/favourite/<%=habits[i].id%>" class="favourites" id="favourite-<%=habits[i].id%>" > <i class="fas fa-heart " ></i> </a> 
+                                
+                                        <%}%>                                       
+                                        <a href="/delete/<%=habits[i].id%>" class="delete-button" id="delete-<%=habits[i].id%>" >  <i class="fas fa-trash"></i> </a> 
+                               </td>
+                </tr>
+
+            <%}%>
+            </table>
+        </div>      
+        <script src="/js/weeklyView.js"></script>
+ 
+
+        

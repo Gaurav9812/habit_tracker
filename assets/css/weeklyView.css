@@ -1,0 +1,33 @@
+body{
+  background:linear-gradient(hsl(16, 47%, 83%),red);
+  min-height: 100vh;
+}
+.outer-div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  th,td{
+    width: 8rem;
+    text-align: center;
+    height: 4rem;
+    word-break: break-word;
+    font-family: cursive;
+  }
+  th{
+    background-color: brown;
+  }
+  td button{
+    background-color: transparent;
+    border: 0;
+  }
+  #habit-div
+      {
+          text-align: center;
+          padding: 1rem;
+          color: darkred;
+          font-family: auto;
+          font-style: italic;
+      }
