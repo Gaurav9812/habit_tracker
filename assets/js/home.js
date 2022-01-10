@@ -1,7 +1,5 @@
-console.log("connected");
 
 $('#add-habit').click(function(){
-    console.log('clicked');
   $('#create-habit').css({
       display:'flex'
   })  
@@ -68,14 +66,12 @@ let deleteEvent=function(deleteLink)
     
     $(deleteLink).click(function(e)
     { 
-      console.log(deleteLink);
         e.preventDefault();
         $.ajax({
             type:'get',
             url:$(deleteLink).prop('href'),
             success:function(data)
             {
-              console.log(data.data);
                 $(`#card-${data.data.habit_id}`).remove();
                 new Noty({
                   theme: 'mint',
@@ -109,14 +105,12 @@ let updateEvent=function(updateLink)
     
     $(updateLink).click(function(e)
     { 
-      console.log(updateLink);
         e.preventDefault();
         $.ajax({
             type:'get',
             url:$(updateLink).prop('href'),
             success:function(data)
             {
-              console.log(data.data);
               $(`#days-${data.data.id}`).text(`No of days done:${data.data.days_done}/${data.data.total_days}`);
               $(`#currentStreak-${data.data.id}`).text(`Current Streak:${data.data.current_streak}`);
               $(`#bestStreak-${data.data.id}`).text(`Longest Streak:${data.data.longest_streak}`);
@@ -140,6 +134,7 @@ let updateEvent=function(updateLink)
     });
     
 }
+
 function traversingUpdate()
 {
   
@@ -151,6 +146,7 @@ function traversingUpdate()
 }
 traversingUpdate();
 
+//logic for search 
 function sortRows()
 {
     let cards=document.getElementsByClassName('card');

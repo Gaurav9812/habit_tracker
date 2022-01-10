@@ -1,3 +1,4 @@
+// adding click hanler on favorite
 let favouriteEvent=function(favouriteLink)
 {
     
@@ -9,12 +10,11 @@ let favouriteEvent=function(favouriteLink)
             url:$(favouriteLink).prop('href'),
             success:function(data)
             {
-              console.log(data.data);
-              if(data.data.red){
+                if(data.data.red){
                     $(`#favourite-${data.data.habit_id}`).css({
-                      color:"red"
+                    color:"red"
                     });
-                  }else{
+                }else{
                     $(`#favourite-${data.data.habit_id}`).css({
                       color:"blue"
                     });
@@ -27,6 +27,7 @@ let favouriteEvent=function(favouriteLink)
     });
     
 }
+//traversing over all faviorites
 function traversingFavourites()
 {
   
@@ -38,21 +39,19 @@ function traversingFavourites()
 }
 traversingFavourites();
 
+// Adding event Listener to delete button
 let deleteEvent=function(deleteLink)
 {
     
     $(deleteLink).click(function(e)
     { 
-      console.log(deleteLink);
         e.preventDefault();
         $.ajax({
             type:'get',
             url:$(deleteLink).prop('href'),
             success:function(data)
             {
-              console.log(data.data);
-                $(`#card-${data.data.habit_id}`).remove();
-                  
+                $(`#row-${data.data.habit_id}`).remove();
                     
             },error:function(err){
                 console.log('error',err);
@@ -61,50 +60,51 @@ let deleteEvent=function(deleteLink)
     });
     
 }
-
+//iterating over all delete button sending to delete event
 function traversingDelete()
 {
-  
-     $( ".delete-button" ).each( function( index, element ){
+
+    $( ".delete-button" ).each( function( index, element ){
         
-          deleteEvent(element);        
+            deleteEvent(element);        
     });
 
 }
 traversingDelete();
 
+//to event listener to update button
 let updateEvent=function(updateLink)
 {
     
     $(updateLink).click(function(e)
-    { 
-      
+    {   
+        
         e.preventDefault();
         $.ajax({
             type:'get',
             url:$(updateLink).prop('href'),
             success:function(data)
             {
-              if(data.data.status==0)
-              { 
-                  $(`#update-${data.data.id}`).text("none");
-                  $(`#detail-${data.data.id}`).css({
-                      background:"coral"
-                  })
-              }
-              else if(data.data.status==1)
-              {   
-                   $(`#update-${data.data.id}`).text("not done");
-                   $(`#detail-${data.data.id}`).css({
+                if(data.data.status==0)
+                { 
+                    $(`#update-${data.data.id}`).text("none");
+                    $(`#detail-${data.data.id}`).css({
+                        background:"coral"
+                    })
+                }
+                else if(data.data.status==1)
+                {     
+                    $(`#update-${data.data.id}`).text("not done");
+                    $(`#detail-${data.data.id}`).css({
                     background:"aliceblue"
                 })
-              }else{
+                }else{
                     $(`#update-${data.data.id}`).text("done");
                     $(`#detail-${data.data.id}`).css({
                         background:"lightgreen"
                     })
-              }
-                  
+                }
+
                     
             },error:function(err){
                 console.log('error',err);
@@ -115,15 +115,16 @@ let updateEvent=function(updateLink)
 }
 function traversingUpdate()
 {
-  
-     $( ".update" ).each( function( index, element ){
+
+        $( ".update" ).each( function( index, element ){
         
-          updateEvent(element);        
+            updateEvent(element);        
     });
 
 }
 traversingUpdate();
 
+// to add color to days
 $('td').each(function(index,element){
     // console.log(element.innerText)
     let str=element.innerText;
@@ -141,6 +142,7 @@ $('td').each(function(index,element){
     }
 })
 
+//logic for search
 function sortRows()
 {
     var   txtValue;

@@ -3,19 +3,22 @@ const Habits=require('../models/habits');
 const HabitStatus=require('../models/habitStatus');
 
 
-
+//Home Page
 module.exports.home=async function(req,res){
     try{
-    let habits=await Habits.find({}).populate('days');
-    return res.render('weekly_view',{
-        habits:habits
-    })
-    }catch(err)
+        let habits=await Habits.find({}).populate('days');
+        return res.render('weekly_view',{
+            habits:habits
+        })
+    }
+    catch(err)
     {
-
+        console.log("error ",err)
+        res.redirect('back');
     }
 }
 
+//U[dating no. of days done]
 module.exports.update=async function(req,res)
 {
     try{
@@ -42,8 +45,7 @@ module.exports.update=async function(req,res)
             if(req.xhr)
             {
                 
-               
-               return res.status(200).json({
+                return res.status(200).json({
                     data:{
                         status:day.status,
                         id:req.query.day_id,
