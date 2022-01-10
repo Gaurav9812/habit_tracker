@@ -55,7 +55,7 @@ module.exports.home=async function(req,res)
             }
             let currentStreak=0;
             //to find current streak if days are not added
-            if(bool){
+            if(!bool){
                 for(let i=len1-1;i>=0;i--)
                 {
                     if(hab.days[i].status==2)
@@ -65,6 +65,7 @@ module.exports.home=async function(req,res)
                         break;
                     }
                 }
+                
             }
             //saving habit
             hab.current_streak=currentStreak;
